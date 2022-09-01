@@ -12,9 +12,18 @@ describe("productiv app", function () {
     expect(result.queryByText("Prøductïv")).toBeInTheDocument();
   });
 
-  it ("rendered quotes app", function () {
+  // it ("rendered quotes app", function () {
+  //   const result = render(<App />);
+  //   expect(result.queryByText("Click here for an inspirational quøte!")).toBeInTheDocument();
+  // });
+
+  it("todo list is displayed", function () {
     const result = render(<App />);
-    expect(result.queryByText("Click here for an inspirational quøte!")).toBeInTheDocument();
+    expect(result.queryByText("Todos")).toBeInTheDocument();
+  });
+
+  it("Add Nü form is displayed", function () {
+    const result = render(<App />);
+    expect(result.queryByText("Add Nü")).toBeInTheDocument();
   });
 });
-
