@@ -73,7 +73,8 @@ function TodoForm({ initialFormData = initialFormDefault, handleSave }) {
             <option value={3}>Meh</option>
           </select>
         </div>
-        <button className="btn-primary rig btn btn-sm NewTodoForm-addBtn">
+        <button className="btn-primary rig btn btn-sm NewTodoForm-addBtn"
+          onSubmit= {handleSubmit}>
           Gø!
         </button>
       </div>
