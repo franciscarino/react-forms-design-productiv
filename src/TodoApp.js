@@ -5,7 +5,7 @@ import TopTodo from "./TopTodo";
 import EditableTodoList from "./EditableTodoList";
 import TodoForm from "./TodoForm";
 
-/** App for managing a todo list.
+/** itApp for managing a todo list.
  *
  * Props:
  * - initialTodos: possible array of [ todo, ... ]
@@ -51,7 +51,7 @@ function TodoApp({ initialTodos }) {
     <main className="TodoApp">
       <div className="row">
         <div className="col-md-6">
-          {todos.length > 0 
+          {todos.length > 0
             ? <EditableTodoList todos={todos} update={update} remove={remove} />
             : <span className="text-muted">You have no todos.</span>
           }
@@ -59,7 +59,7 @@ function TodoApp({ initialTodos }) {
 
         <div className="col-md-6">
           <section className="mb-4">
-            {todos.length > 0 
+            {todos.length > 0
             && (
               <div>
                 <h3>Top Todo</h3>
