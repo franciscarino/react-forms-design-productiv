@@ -16,8 +16,8 @@ import TodoForm from "./TodoForm";
  * App -> TodoApp -> { TodoForm, EditableTodoList }
  */
 
-function TodoApp() {
-  const [todos, setTodos] = useState([]);
+function TodoApp({ initialTodos }) {
+  const [todos, setTodos] = useState(initialTodos);
 
   /** add a new todo to list */
   function create(todo) {
@@ -26,47 +26,46 @@ function TodoApp() {
   }
 
   /** update a todo with updatedTodo */
+  //TODO: refactor as map
+  // todos.map(todo => todo.id === updatedTodo.id ? updatedTodo : todo)
   function update(updatedTodo) {
-    //TODO:clean up code, possibly fix it
-    const copyTodos = [...todos];
+    setTodos((todos) =>
+      todos.map((todo) => (todo.id === updatedTodo.id ? updatedTodo : todo))
+    );
+    // const copyTodos = [...todos];
 
-    for (let i = 0; i < todos.length; i++) {
-      if (todos[i].id === updatedTodo.id) {
-        copyTodos.splice(i, 1, updatedTodo);
-        setTodos(copyTodos);
-      }
-    }
-    //find the same id in the todos array
-    // todos.filter((t)=> t.id === id)
-    //replace old todo with the new one using setTodos()
+    // for (let i = 0; i < todos.length; i++) {
+    //   if (todos[i].id === updatedTodo.id) {
+    //     copyTodos.splice(i, 1, updatedTodo);
+    //     setTodos(copyTodos);
+    //   }
+    // }
   }
 
   /** delete a todo by id */
   function remove(id) {
-    setTodos((todos) => todos.filter((t) => t.id !== id));
+    setTodos(todos => todos.filter(t => t.id !== id));
   }
-
+  //TODO: reformat ternary.
   return (
     <main className="TodoApp">
       <div className="row">
         <div className="col-md-6">
-          {todos.length > 0 ? (
-            <EditableTodoList todos={todos} update={update} remove={remove} />
-          ) : (
-            <span className="text-muted">You have no todos.</span>
-          )}
+          {todos.length > 0 
+            ? <EditableTodoList todos={todos} update={update} remove={remove} />
+            : <span className="text-muted">You have no todos.</span>
+          }
         </div>
 
         <div className="col-md-6">
           <section className="mb-4">
-            {todos.length > 0 ? (
+            {todos.length > 0 
+            && (
               <div>
                 <h3>Top Todo</h3>
                 <TopTodo todos={todos} />
               </div>
-            ) : (
-              ""
-            )}
+            ) }
           </section>
 
           <section>

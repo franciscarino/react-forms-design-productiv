@@ -8,6 +8,9 @@ import TodoForm from "./TodoForm";
  * - todo
  * - update(): fn to call to update a todo
  * - remove(): fn to call to remove a todo
+ * 
+ * //TODO:
+ * State:
  *
  * EditableTodoList -> EditableTodo -> { Todo, TodoForm }
  */
@@ -18,6 +21,7 @@ function EditableTodo({ todo, update, remove }) {
   /** Toggle if this is being edited */
   function toggleEdit() {
     setIsEditing(!isEditing);
+    // setIsEditing(true);
   }
 
   /** Call remove fn passed to this. */
@@ -31,6 +35,7 @@ function EditableTodo({ todo, update, remove }) {
     setIsEditing(false)
   }
 
+  //TODO: reformat ternary
   return (
     <div className="EditableTodo">
       {isEditing ? (

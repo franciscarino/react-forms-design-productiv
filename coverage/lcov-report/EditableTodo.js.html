@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/6</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -118,7 +118,13 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -133,19 +139,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -187,43 +199,49 @@ import TodoForm from "./TodoForm";
  * EditableTodoList -&gt; EditableTodo -&gt; { Todo, TodoForm }
  */
 &nbsp;
-function EditableTodo() {
+function EditableTodo({ todo, update, remove }) {
+  const [isEditing, setIsEditing] = useState(false);
 &nbsp;
   /** Toggle if this is being edited */
-  function <span class="fstat-no" title="function not covered" >toggleEdit(</span>) { }
+  function <span class="fstat-no" title="function not covered" >toggleEdit(</span>) {
+<span class="cstat-no" title="statement not covered" >    setIsEditing(!isEditing);</span>
+  }
 &nbsp;
   /** Call remove fn passed to this. */
-  function <span class="fstat-no" title="function not covered" >handleDelete(</span>) { }
+  function <span class="fstat-no" title="function not covered" >handleDelete(</span>) {
+<span class="cstat-no" title="statement not covered" >    remove(todo.id)</span>
+  }
 &nbsp;
   /** Edit form saved; toggle isEditing and update in ancestor. */
-  function <span class="fstat-no" title="function not covered" >handleSave(</span>formData) { }
+  function <span class="fstat-no" title="function not covered" >handleSave(</span>formData) {
+<span class="cstat-no" title="statement not covered" >    update(formData)</span>
+<span class="cstat-no" title="statement not covered" >    setIsEditing(false)</span>
+  }
 &nbsp;
   return (
-      &lt;div className="EditableTodo"&gt;
-&nbsp;
-                EITHER
-&nbsp;
-                &lt;TodoForm /&gt;
-&nbsp;
-                OR
-&nbsp;
-                &lt;div className="mb-3"&gt;
-                  &lt;div className="float-end text-sm-end"&gt;
-                    &lt;button
-                        className="EditableTodo-toggle btn-link btn btn-sm"
-                        onClick={toggleEdit}&gt;
-                      Edit
-                    &lt;/button&gt;
-                    &lt;button
-                        className="EditableTodo-delBtn btn-link btn btn-sm text-danger"
-                        onClick={handleDelete}&gt;
-                      Del
-                    &lt;/button&gt;
-                  &lt;/div&gt;
-                  &lt;Todo /&gt;
-                &lt;/div&gt;
-&nbsp;
-      &lt;/div&gt;
+    &lt;div className="EditableTodo"&gt;
+      {isEditing ? (
+<span class="branch-0 cbranch-no" title="branch not covered" >        &lt;TodoForm initialFormData={todo} handleSave={handleSave} /&gt;</span>
+      ) : (
+        &lt;div className="mb-3"&gt;
+          &lt;div className="float-end text-sm-end"&gt;
+            &lt;button
+              className="EditableTodo-toggle btn-link btn btn-sm"
+              onClick={toggleEdit}
+            &gt;
+              Edit
+            &lt;/button&gt;
+            &lt;button
+              className="EditableTodo-delBtn btn-link btn btn-sm text-danger"
+              onClick={handleDelete}
+            &gt;
+              Del
+            &lt;/button&gt;
+          &lt;/div&gt;
+          &lt;Todo todo={todo} /&gt;
+        &lt;/div&gt;
+      )}
+    &lt;/div&gt;
   );
 }
 &nbsp;
@@ -235,7 +253,7 @@ export default EditableTodo;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-09-01T21:44:24.370Z
+                at 2022-09-02T16:55:38.382Z
             </div>
         <script src="prettify.js"></script>
         <script>
